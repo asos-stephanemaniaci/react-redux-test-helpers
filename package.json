@@ -1,7 +1,7 @@
 {
-  "name": "asos-web-test-helpers",
+  "name": "react-redux-test-helpers",
   "version": "0.1",
-  "description": "a group of test helpers tailored for the ASOS web projects",
+  "description": "a collection of React/Redux test helpers",
   "main": "index.js",
   "author": "Stephane Maniaci",
   "license": "MIT",

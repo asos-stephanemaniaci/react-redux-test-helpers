@@ -1,0 +1,34 @@
+#+TITLE: react-redux-test-helpers
+
+This package provides a small collection of test helpers for projects
+using React and/or Redux. It is quite succint at the moment but any
+contributions is welcome.
+
+* API
+** ~renderWithDefaultProps~
+This aptly named helper will render a component with a set of default
+props and let you specify which ones to override.
+
+#+BEGIN_SRC js
+import { renderWithDefaultProps } from "react-redux-test-helpers"
+import Component from "./Component";
+
+const defaultProps = {
+  title: "a title",
+  description: "some content",
+};
+
+const render = renderWithDefaultProps(Component, defaultProps);
+
+render(); // { title: "a title", description: "some content" }
+render({ description: "dang" }); // { title: "a title", description: "dang" }
+#+END_SRC
+
+It accepts an additional argument to specify options, which at the
+moment is only ~useMount~ and that decides whether the underlying
+Enzyme render process uses ~shallow~ or ~mount~ to render the
+component.
+
+#+BEGIN_SRC js
+render({ description: "dang" }, { useMount: true }); // same as above using mount().
+#+END_SRC
