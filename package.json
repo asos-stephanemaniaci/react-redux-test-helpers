@@ -1,0 +1,14 @@
+{
+  "name": "asos-web-test-helpers",
+  "version": "0.1",
+  "description": "a group of test helpers tailored for the ASOS web projects",
+  "main": "index.js",
+  "author": "Stephane Maniaci",
+  "license": "MIT",
+  "peerDependencies": {
+    "enzyme": "^3.3.0",
+    "react": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
+  }
+}
