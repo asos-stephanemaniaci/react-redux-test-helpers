@@ -5,11 +5,17 @@ const defaultOptions = {
   useMount: false
 };
 
-export default (component, defaultProps, opts = defaultOptions) => props => {
-  const merged = Object.assign({}, defaultProps, props);
+module.exports = function renderWithDefaultProps(
+  component,
+  defaultProps,
+  opts = defaultOptions
+) {
+  return function render(props) {
+    const merged = Object.assign({}, defaultProps, props);
 
-  const el = React.createElement(component, merged);
-  const render = opts.useMount ? mount : shallow;
+    const el = React.createElement(component, merged);
+    const render = opts.useMount ? mount : shallow;
 
-  return render(el);
+    return render(el);
+  };
 };
