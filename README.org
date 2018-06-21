@@ -4,6 +4,9 @@ This package provides a small collection of test helpers for projects
 using React and/or Redux. It is quite succint at the moment but any
 contributions is welcome.
 
+* Installation
+~yarn add https://github.com/asos-stephanemaniaci/react-redux-test-helpers.git~
+
 * API
 ** ~renderWithDefaultProps~
 This aptly named helper will render a component with a set of default
