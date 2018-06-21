@@ -1,14 +1,28 @@
 #+TITLE: react-redux-test-helpers
 
-This package provides a small collection of test helpers for projects
-using React and/or Redux. It is quite succint at the moment but any
-contributions is welcome.
+This package provides a few helpers to help test React/Redux
+components.
+
+* Table of contents                                                     :TOC:
+- [[#installation][Installation]]
+- [[#api][API]]
+  - [[#renderwithdefaultpropscomponent-defaultprops-options][~renderWithDefaultProps(Component, defaultProps, options)~]]
+  - [[#testreduxcomponent][~testReduxComponent~~]]
+
+* Overview
+If you work with the traditional React/Redux components architecture,
+you'll find yourself writing a lot of verbose tests, usually looking
+the same shape and involving a lot of manual mocking with the same
+assertions.
+
+This helpers aim to reduce the amount of code you write so you can
+focus on the fun parts :sunglasses:.
 
 * Installation
 ~yarn add https://github.com/asos-stephanemaniaci/react-redux-test-helpers.git~
 
 * API
-** ~renderWithDefaultProps~
+** ~renderWithDefaultProps(Component, defaultProps, options)~
 This aptly named helper will render a component with a set of default
 props and let you specify which ones to override.
 
@@ -34,4 +48,36 @@ component.
 
 #+BEGIN_SRC js
 render({ description: "dang" }, { useMount: true }); // same as above using mount().
+#+END_SRC
+
+** ~testReduxComponent~~
+This function provides you three functions you can use to assess your
+Redux wrapper is passing the proper props/actions to your component.
+
+Instantiate the helpers like this:
+
+#+BEGIN_SRC js
+import ConnectedComponent from "."; // index.js
+import Component from "./component"; // component.js
+import { testReduxProps } from "react-redux-test-helpers";
+
+jest.unmock("redux");
+
+jest.mock("./Component");
+
+const { testProp, testAction, testRender } = testReduxProps(ConnectedComponent, Component);
+#+END_src
+
+*** ~testProp(propName, action, parameterOrder)~
+~testProp~ ensures ~mapStateToProps~ connects the correct name to the
+correct store value.
+
+#+BEGIN_SRC js
+import { getMyStateProp } from "./path/to/state/selector";
+
+jest.mock("./path/to/state/selector");
+
+describe("connected component", () => {
+  testProp("prop", getMyStateProp);
+})
 #+END_SRC
