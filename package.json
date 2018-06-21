@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "a collection of React/Redux test helpers",
   "main": "index.js",
-  "author": "Stephane Maniaci",
+  "author": "Stéphane Maniaci",
   "license": "MIT",
   "dependencies": {
     "enzyme": "^3.3.0",
