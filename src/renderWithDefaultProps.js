@@ -1,21 +1,18 @@
-const React = require("react");
-const { shallow, mount } = require("enzyme");
+import React from "react";
+import { shallow, mount } from "enzyme";
 
 const defaultOptions = {
   useMount: false
 };
 
-module.exports = function renderWithDefaultProps(
-  component,
-  defaultProps,
-  opts = defaultOptions
-) {
-  return function render(props) {
-    const merged = Object.assign({}, defaultProps, props);
-
-    const el = React.createElement(component, merged);
-    const render = opts.useMount ? mount : shallow;
-
-    return render(el);
+export default (component, defaultProps, opts = defaultOptions) => props => {
+  const merged = {
+    ...defaultProps,
+    ...props
   };
+
+  const el = React.createElement(component, merged);
+  const render = opts.useMount ? mount : shallow;
+
+  return render(el);
 };

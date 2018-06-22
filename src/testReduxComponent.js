@@ -1,7 +1,7 @@
-const React = require("react");
-const { createStore } = require("redux");
-const { Provider } = require("react-redux");
-const { mount } = require("enzyme");
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import React from "react";
+import { mount } from "enzyme";
 
 function testReduxComponent(ConnectedComponent, component, initialStore = {}) {
   const state = initialStore;
@@ -77,4 +77,4 @@ function testReduxComponent(ConnectedComponent, component, initialStore = {}) {
   return { testProp, testAction, testRender, stateParam };
 }
 
-module.exports = testReduxComponent;
+export default testReduxComponent;
