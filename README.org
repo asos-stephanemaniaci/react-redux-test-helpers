@@ -3,12 +3,15 @@
 This package provides a few helpers to help test React/Redux
 components.
 
-* Table of contents                                                     :TOC:
+* Table of contents                                                     :TOC_3_gh:
 - [[#overview][Overview]]
 - [[#installation][Installation]]
 - [[#api][API]]
   - [[#renderwithdefaultpropscomponent-defaultprops-options][~renderWithDefaultProps(Component, defaultProps, options)~]]
   - [[#testreduxcomponent][~testReduxComponent~]]
+    - [[#testrender][~testRender()~]]
+    - [[#testproppropname-action-parameterorder][~testProp(propName, action, parameterOrder)~]]
+    - [[#testactionactionname-action][~testAction(actionName, action)~]]
 
 * Overview
 If you work with the traditional React/Redux components architecture,
