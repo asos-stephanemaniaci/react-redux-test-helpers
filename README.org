@@ -4,10 +4,11 @@ This package provides a few helpers to help test React/Redux
 components.
 
 * Table of contents                                                     :TOC:
+- [[#overview][Overview]]
 - [[#installation][Installation]]
 - [[#api][API]]
   - [[#renderwithdefaultpropscomponent-defaultprops-options][~renderWithDefaultProps(Component, defaultProps, options)~]]
-  - [[#testreduxcomponent][~testReduxComponent~~]]
+  - [[#testreduxcomponent][~testReduxComponent~]]
 
 * Overview
 If you work with the traditional React/Redux components architecture,
@@ -50,34 +51,40 @@ component.
 render({ description: "dang" }, { useMount: true }); // same as above using mount().
 #+END_SRC
 
-** ~testReduxComponent~~
+** ~testReduxComponent~
 This function provides you three functions you can use to assess your
 Redux wrapper is passing the proper props/actions to your component.
 
-Instantiate the helpers like this:
-
-#+BEGIN_SRC js
-import ConnectedComponent from "."; // index.js
-import Component from "./component"; // component.js
-import { testReduxProps } from "react-redux-test-helpers";
-
-jest.unmock("redux");
-
-jest.mock("./Component");
-
-const { testProp, testAction, testRender } = testReduxProps(ConnectedComponent, Component);
-#+END_src
+*** ~testRender()~
+~testRender~ just makes sure your connected component passes rendering
+and does render your underlying component.
 
 *** ~testProp(propName, action, parameterOrder)~
-~testProp~ ensures ~mapStateToProps~ connects the correct name to the
-correct store value.
+~testProp~ ensures what you would declare in ~mapStateToProps~, by
+checking that the correctly-named prop maps to the correct store value.
 
+*** ~testAction(actionName, action)~
+~testAction~ ensures what you would declare in ~mapDispatchToProps~, by
+checking that the correctly-named prop maps to the correct store action.
+
+In action (Redux puns /are/ a thing), it looks like this:
 #+BEGIN_SRC js
-import { getMyStateProp } from "./path/to/state/selector";
+import { testReduxComponent } from "react-redux-test-helpers";
 
-jest.mock("./path/to/state/selector");
+import ConnectedComponent from ".";
+import Component from "./component";
+import { isUserLoggedIn, dispatchUserLogin } from "./path/to/state/module";
 
-describe("connected component", () => {
-  testProp("prop", getMyStateProp);
-})
+jest.unmock("redux");
+jest.mock("./Component");
+
+const { testProp, testAction, testRender } = testReduxComponent(ConnectedComponent, Component);
+
+describe("my connected component", () => {
+  testRender();
+
+  testProp("isLoggedIn", isUserLoggedIn);
+
+  testAction("onSubmit", setUserLogin);
+});
 #+END_SRC
