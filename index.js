@@ -3,5 +3,7 @@ import Adapter from "enzyme-adapter-react-16";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-export { renderWithDefaultProps } from "./src/renderWithDefaultProps";
-export { testReduxComponent } from "./src/testReduxComponent.js";
+import renderWithDefaultProps from "./src/renderWithDefaultProps";
+import testReduxComponent from "./src/testReduxComponent.js";
+
+export { renderWithDefaultProps, testReduxComponent };
