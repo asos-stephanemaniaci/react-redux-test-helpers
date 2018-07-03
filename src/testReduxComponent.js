@@ -1,7 +1,10 @@
+import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import React from "react";
-import { mount } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import { mount, configure } from "enzyme";
+
+configure({ adapter: new Adapter() });
 
 function testReduxComponent(ConnectedComponent, component, initialStore = {}) {
   const state = initialStore;
