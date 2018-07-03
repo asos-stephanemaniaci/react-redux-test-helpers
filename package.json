@@ -5,13 +5,13 @@
   "main": "index.js",
   "author": "Stéphane Maniaci",
   "license": "MIT",
-  "dependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-redux": "^5.0.7",
-    "react-test-renderer": "^16.4.0",
-    "redux": "^4.0.0"
+  "peerDependencies": {
+    "enzyme": "^3.x",
+    "enzyme-adapter-react-16": "^1.1.x",
+    "react": "^16.x",
+    "react-dom": "^16.x",
+    "react-redux": "^5.x",
+    "react-test-renderer": "^16.x",
+    "redux": "^3.x"
   }
 }
