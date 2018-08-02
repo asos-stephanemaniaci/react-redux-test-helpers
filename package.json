@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Stéphane Maniaci",
   "license": "MIT",
+  "scripts": {
+    "ci": "echo all good"
+  },
   "peerDependencies": {
     "enzyme": "^3.x",
     "enzyme-adapter-react-16": "^1.1.x",
