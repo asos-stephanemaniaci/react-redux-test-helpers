@@ -1,7 +1,7 @@
 #+TITLE: react-redux-test-helpers
 
 This package provides a few helpers to help test React/Redux
-components.
+components. It's tested on TC.
 
 * Table of contents                                                     :TOC_3_gh:
 - [[#overview][Overview]]
